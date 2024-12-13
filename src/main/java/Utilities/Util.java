@@ -136,7 +136,7 @@ public class Util {
     //function to restore those cookies
     public static void restoreSession(WebDriver driver, Set<Cookie> cookies)
     {
-        for (Cookie co : cookies)
+        for (Cookie coc : cookies)
         {
             driver.manage().addCookie(co);
         }
