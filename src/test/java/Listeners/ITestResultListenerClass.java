@@ -2,10 +2,9 @@ package Listeners;
 
 import Utilities.LogsUtils;
 import org.testng.ITestListener;
-import org.testng.ITestNGListener;
 import org.testng.ITestResult;
 
-public class ITestResultLIstenerClass implements ITestListener {
+public class ITestResultListenerClass implements ITestListener {
 
     public void onTestStart(ITestResult result)
     {
