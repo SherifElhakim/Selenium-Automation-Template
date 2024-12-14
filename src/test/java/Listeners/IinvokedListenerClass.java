@@ -1,7 +1,6 @@
 package Listeners;
 
 import Utilities.LogsUtils;
-import Utilities.Util;
 import org.testng.IInvokedMethod;
 import org.testng.IInvokedMethodListener;
 import org.testng.ITestResult;
@@ -11,7 +10,7 @@ import java.io.IOException;
 import static DriverFactory.DriverFactory.getDriver;
 import static Utilities.Util.takeScreenshot;
 
-public class IinvokedListenerCLass implements IInvokedMethodListener {
+public class IinvokedListenerClass implements IInvokedMethodListener {
     public void beforeInvocation(IInvokedMethod method, ITestResult testResult) {
     }
 
