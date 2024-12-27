@@ -15,7 +15,7 @@ public class DataUtils {
     //TODO: reading data from JSON file
 
     public static String getJsonData(String name, String field) throws FileNotFoundException {
-        FileReader reader = new FileReader(Test_Data_path + name + "json");
+        FileReader reader = new FileReader(Test_Data_path + name + ".json");
 
         JsonElement jelem = JsonParser.parseReader(reader);
         return jelem.getAsJsonObject().get(field).getAsString();
