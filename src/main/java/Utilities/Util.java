@@ -4,6 +4,7 @@ import com.assertthat.selenium_shutterbug.core.Capture;
 import com.assertthat.selenium_shutterbug.core.Shutterbug;
 import io.qameta.allure.Allure;
 import org.openqa.selenium.*;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -71,6 +72,11 @@ public class Util {
     public static void SelectingFromDropDown(WebDriver driver, By locator, String Op)
     {
         new Select(findWebElement(driver, locator)).selectByVisibleText(Op);
+    }
+
+    public static void moveToElement(WebDriver driver , By locator){
+        Actions actions = new Actions(driver);
+        actions.moveToElement(findWebElement(driver,locator)).perform();
     }
 
     public static String getTimeStamp(){
