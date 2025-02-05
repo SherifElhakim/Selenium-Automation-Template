@@ -37,6 +37,11 @@ public class Util {
     driver.findElement(locator).click();
     }
 
+    public static void clearText(WebDriver driver , By locator){
+        new WebDriverWait(driver,Duration.ofSeconds(5)).until(ExpectedConditions.visibilityOfElementLocated(locator));
+        findWebElement(driver,locator).clear();
+    }
+
     public static String getText(WebDriver driver, By locator)
     {
         new WebDriverWait(driver, Duration.ofSeconds(5)).until(ExpectedConditions.visibilityOfElementLocated(locator));
