@@ -79,6 +79,20 @@ public class Util {
         }
     }
 
+    public static boolean isElementInViewport(WebDriver driver, WebElement element) {
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        return (Boolean) js.executeScript(
+                "var rect = arguments[0].getBoundingClientRect();" +
+                        "return (" +
+                        "rect.top >= 0 && " +                  // Element's top is above the viewport
+                        "rect.left >= 0 && " +                 // Element's left is within the viewport
+                        "rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) && " + // Element's bottom is below the viewport height
+                        "rect.right <= (window.innerWidth || document.documentElement.clientWidth)" +        // Element's right is within the viewport width
+                        ");",
+                element
+        );
+    }
+
     public static void SelectingFromDropDown(WebDriver driver, By locator, String Op)
     {
         new Select(findWebElement(driver, locator)).selectByVisibleText(Op);
