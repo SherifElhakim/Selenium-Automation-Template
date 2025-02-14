@@ -63,6 +63,11 @@ public class Util {
         js.executeScript("window.scrollTo(0, document.body.scrollHeight);");
     }
 
+    public static void scrollToTop(WebDriver driver) {
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("window.scrollTo(0, 0);");
+    }
+
     public static WebElement findWebElement(WebDriver driver, By locator)
     {
         return driver.findElement(locator);
