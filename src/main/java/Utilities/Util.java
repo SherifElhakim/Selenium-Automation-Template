@@ -58,6 +58,11 @@ public class Util {
         ((JavascriptExecutor)driver).executeScript("arguments[0]._scrollIntoView();",findWebElement(driver, locator));
     }
 
+    public static void scrollToBottom(WebDriver driver) {
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("window.scrollTo(0, document.body.scrollHeight);");
+    }
+
     public static WebElement findWebElement(WebDriver driver, By locator)
     {
         return driver.findElement(locator);
