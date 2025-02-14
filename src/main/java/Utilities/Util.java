@@ -80,6 +80,7 @@ public class Util {
     }
 
     public static void moveToElement(WebDriver driver , By locator){
+        new WebDriverWait(driver,Duration.ofSeconds(5)).until(ExpectedConditions.visibilityOfElementLocated(locator));
         Actions actions = new Actions(driver);
         actions.moveToElement(findWebElement(driver,locator)).perform();
     }
