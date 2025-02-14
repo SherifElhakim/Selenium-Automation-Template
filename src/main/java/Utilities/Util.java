@@ -84,7 +84,10 @@ public class Util {
         }
     }
 
-    public static boolean isElementInViewport(WebDriver driver, WebElement element) {
+    public static boolean isElementInViewport(WebDriver driver, By locator) {
+        // Find the WebElement using the locator
+        WebElement element = findWebElement(driver, locator);
+
         JavascriptExecutor js = (JavascriptExecutor) driver;
         return (Boolean) js.executeScript(
                 "var rect = arguments[0].getBoundingClientRect();" +
@@ -97,7 +100,7 @@ public class Util {
                 element
         );
     }
-
+    
     public static void SelectingFromDropDown(WebDriver driver, By locator, String Op)
     {
         new Select(findWebElement(driver, locator)).selectByVisibleText(Op);
