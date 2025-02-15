@@ -86,18 +86,22 @@ public class Util {
 
     public static boolean isElementInViewport(WebDriver driver, By locator) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        wait.until(ExpectedConditions.presenceOfElementLocated(locator));
-        // Find the WebElement using the locator
-        WebElement element = findWebElement(driver, locator);
 
+        // Wait for the element to be visible
+        WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+
+        // Scroll into view before checking
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
+
+        // Check if the element is within the viewport
         JavascriptExecutor js = (JavascriptExecutor) driver;
         return (Boolean) js.executeScript(
                 "var rect = arguments[0].getBoundingClientRect();" +
                         "return (" +
-                        "rect.top >= 0 && " +                  // Element's top is above the viewport
-                        "rect.left >= 0 && " +                 // Element's left is within the viewport
-                        "rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) && " + // Element's bottom is below the viewport height
-                        "rect.right <= (window.innerWidth || document.documentElement.clientWidth)" +        // Element's right is within the viewport width
+                        "rect.top >= 0 && " +
+                        "rect.left >= 0 && " +
+                        "rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) && " +
+                        "rect.right <= (window.innerWidth || document.documentElement.clientWidth)" +
                         ");",
                 element
         );
